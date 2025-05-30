@@ -10,9 +10,13 @@ const ShowOne = () => {
 
 	useEffect(() => {
 		const getUser = () => {
-			axios.get(`http://localhost:8070/student/get/${id}`).then((res) => {
-				setUser(res.data.user);
-			});
+			axios
+				.get(
+					`https://student-management-backend-fg80gqt3z.vercel.app/student/get/${id}`
+				)
+				.then((res) => {
+					setUser(res.data.user);
+				});
 		};
 		getUser();
 	}, [id]);
@@ -28,7 +32,10 @@ const ShowOne = () => {
 	const handleFormSubmit = (event) => {
 		event.preventDefault();
 		axios
-			.put(`http://localhost:8070/student/update/${id}`, user)
+			.put(
+				`https://student-management-backend-fg80gqt3z.vercel.app/student/update/${id}`,
+				user
+			)
 			.then(() => {
 				Swal.fire({
 					title: "Do you want to save the changes?",

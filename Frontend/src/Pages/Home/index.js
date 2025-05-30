@@ -12,7 +12,9 @@ export default function Home() {
 	useEffect(() => {
 		const getStudents = () => {
 			axios
-				.get("http://localhost:8070/student/get")
+				.get(
+					"https://student-management-backend-fg80gqt3z.vercel.app/student/get"
+				)
 				.then((res) => {
 					setStudents(res.data);
 				})
@@ -33,7 +35,9 @@ export default function Home() {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				axios
-					.delete(`http://localhost:8070/student/delete/${id}`)
+					.delete(
+						`https://student-management-backend-fg80gqt3z.vercel.app/student/delete/${id}`
+					)
 					.then((res) => {
 						Swal.fire("Deleted!", res.data.status, "success");
 						//update table after deleting
