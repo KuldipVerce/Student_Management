@@ -12,16 +12,18 @@ const PORT = process.env.PORT || 8070;
 
 // app.use(cors());
 
-const allowedOrigins = [
-  'https://student-management-tau-ecru.vercel.app', // your frontend Vercel domain
-];
-
+// Enable CORS
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: 'https://student-management-tau-ecru.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   })
 );
+
+// Handle preflight requests
+app.options('*', cors());
 
 /* Add the bodyParser middleware to parse JSON requests. will extract the JSON data from
 the request and parse it into a JavaScript object that can be
