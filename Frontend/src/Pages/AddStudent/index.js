@@ -27,7 +27,7 @@ export default function AddStudent() {
 			if (result.isConfirmed) {
 				axios
 					.post(
-						"https://student-management-backend-1osh1u889.vercel.app/student/add",
+						"https://student-management-backend-5a5qy6id0.vercel.app/student/add",
 						newStudent
 					)
 					.then(() => {
