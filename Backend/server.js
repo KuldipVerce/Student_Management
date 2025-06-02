@@ -12,10 +12,13 @@ const PORT = process.env.PORT || 8070;
 
 // app.use(cors());
 
-// Enable CORS
+// Enable CORS for all routes
 app.use(
   cors({
-    origin: 'https://student-management-tau-ecru.vercel.app',
+    origin: [
+      'https://student-management-tau-ecru.vercel.app',
+      'http://localhost:3000', // For local development
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
