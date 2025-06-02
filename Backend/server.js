@@ -26,20 +26,28 @@ const PORT = process.env.PORT || 8070;
 // );
 
 // 1. CORS Configuration - Exact Solution
+// app.use(
+//   cors({
+//     origin: [
+//       'https://student-management-tau-ecru.vercel.app',
+//       'http://localhost:3000',
+//     ],
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true,
+//   })
+// );
+
 app.use(
   cors({
-    origin: [
-      'https://student-management-tau-ecru.vercel.app',
-      'http://localhost:3000',
-    ],
+    origin: 'https://student-management-tau-ecru.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
   })
 );
 
 // 2. Handle Preflight Requests
-app.options('*', cors()); // Enable preflight for all routes
+//app.options('*', cors()); // Enable preflight for all routes
 
 // 3. Add this middleware to ensure headers are set
 app.use((req, res, next) => {
