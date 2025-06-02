@@ -10,9 +10,21 @@ dotenv.config();
 //specify a port number to run(8070). if that is not available use any available port. ||operator
 const PORT = process.env.PORT || 8070;
 
-app.use(cors());
-/* Add the bodyParser middleware to parse JSON requests. will extract the JSON data from 
-the request and parse it into a JavaScript object that can be 
+// app.use(cors());
+
+const allowedOrigins = [
+  'https://student-management-tau-ecru.vercel.app', // your frontend Vercel domain
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
+
+/* Add the bodyParser middleware to parse JSON requests. will extract the JSON data from
+the request and parse it into a JavaScript object that can be
 easily manipulated in your server-side code.*/
 app.use(bodyParser.json());
 
@@ -44,7 +56,7 @@ const studentRoute = require('./routes/students_route');
 
 /*By using app.use() method with the '/student' route as the first argument,
  you are telling Express to use this middleware for any route that starts with '/student'.
-  This means that if a client makes a request to /student/create, /student/view, /student/update, or 
+  This means that if a client makes a request to /student/create, /student/view, /student/update, or
   any other route that starts with '/student', the request will be passed on to the studetRoute middleware
    to handle.*/
 app.use('/student', studentRoute);
