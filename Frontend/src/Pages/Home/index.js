@@ -13,7 +13,7 @@ export default function Home() {
 		const getStudents = () => {
 			axios
 				.get(
-					"https://student-management-backend-zjsm9ocd9.vercel.app/student/get"
+					"https://student-management-backend-jr951gi36.vercel.app/student/get"
 				)
 				.then((res) => {
 					setStudents(res.data);
@@ -36,7 +36,7 @@ export default function Home() {
 			if (result.isConfirmed) {
 				axios
 					.delete(
-						`https://student-management-backend-zjsm9ocd9.vercel.app/student/delete/${id}`
+						`https://student-management-backend-jr951gi36.vercel.app/student/delete/${id}`
 					)
 					.then((res) => {
 						Swal.fire("Deleted!", res.data.status, "success");
