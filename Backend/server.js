@@ -10,57 +10,15 @@ dotenv.config();
 //specify a port number to run(8070). if that is not available use any available port. ||operator
 const PORT = process.env.PORT || 8070;
 
-// app.use(cors());
-
-// Enable CORS for all routes
-// app.use(
-//   cors({
-//     origin: [
-//       'https://student-management-tau-ecru.vercel.app',
-//       'http://localhost:3000', // For local development
-//     ],
-//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//     allowedHeaders: ['Content-Type', 'Authorization'],
-//     credentials: true,
-//   })
-// );
-
-// 1. CORS Configuration - Exact Solution
-// app.use(
-//   cors({
-//     origin: [
-//       'https://student-management-tau-ecru.vercel.app',
-//       'http://localhost:3000',
-//     ],
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type', 'Authorization'],
-//     credentials: true,
-//   })
-// );
+//app.use(cors());
 
 app.use(
   cors({
-    origin: 'https://student-management-tau-ecru.vercel.app',
+    origin: ['https://student-management-tau-ecru.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
   })
 );
-
-// 2. Handle Preflight Requests
-//app.options('*', cors()); // Enable preflight for all routes
-
-// 3. Add this middleware to ensure headers are set
-app.use((req, res, next) => {
-  res.header(
-    'Access-Control-Allow-Origin',
-    'https://student-management-tau-ecru.vercel.app'
-  );
-  res.header('Access-Control-Allow-Credentials', 'true');
-  next();
-});
-
-// Handle preflight requests
-app.options('*', cors());
 
 /* Add the bodyParser middleware to parse JSON requests. will extract the JSON data from
 the request and parse it into a JavaScript object that can be

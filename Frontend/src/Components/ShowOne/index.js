@@ -12,7 +12,7 @@ const ShowOne = () => {
 		const getUser = () => {
 			axios
 				.get(
-					`https://student-management-backend-3p7mp4gpc.vercel.app/student/get/${id}`
+					`https://student-management-backend-two.vercel.app/student/get/${id}`
 				)
 				.then((res) => {
 					setUser(res.data.user);
@@ -33,7 +33,7 @@ const ShowOne = () => {
 		event.preventDefault();
 		axios
 			.put(
-				`https://student-management-backend-3p7mp4gpc.vercel.app/student/update/${id}`,
+				`https://student-management-backend-two.vercel.app/student/update/${id}`,
 				user
 			)
 			.then(() => {
